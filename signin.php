@@ -7,7 +7,7 @@ if(isset($submit))
 	$query = "SELECT id FROM user WHERE `email` = ? AND `password` = ?";
 	$statement = $conn->prepare($query);
 	$statement->bindValue(1, $email);
-	$statement->bindValue(2, $password);
+	$statement->bindValue(2, md5($password));
 	if(!$statement->execute()){
 		echo "QUERY FAILED : Error -> " . json_encode($statement->errorMsg());
 		return;

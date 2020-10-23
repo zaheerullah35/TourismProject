@@ -4,16 +4,14 @@
 extract($_POST);
 include_once("tourismdatabase.php");
  //$pass=md5($pass);
- 
+
     
 
  if(isset($submit))
  {
     $email=$_POST['email'];
 	$password=$_POST['password'];
-	//$id='123';
-	//$userType='1';
-	
+ 	$password = md5($password);
 	$sql="INSERT INTO user(email,password) VALUES(?,?)";
 	$statement =$conn->prepare($sql);  
 	$statement->execute([$email,$password]);
